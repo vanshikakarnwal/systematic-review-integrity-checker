@@ -111,4 +111,4 @@ python -m lit_inspector.main
 
 ---
 
-*Forked from the original group repository. This fork documents my Module 2 contribution as part of my professional portfolio.*
+*Forked from the original group repository. This fork documents my Module 2 contribution as part of my professional portfolio.* 
