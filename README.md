@@ -32,32 +32,33 @@ The title normalisation and flexible comparison logic I implemented significantl
 
 ## System Architecture - 4-Stage Pipeline
 
+```
 Input (PDF or YAML)
-│
-▼
+       │
+       ▼
 Stage 1: Ingestion & Search Validation
-
-PyMuPDF text extraction
-LLM-driven structuring into StudentReviewInput schema
-PubMed search reproduction via NCBI E-utilities API │
-▼
-Stage 2: Paper Verification ◄── MY MODULE
-CrossRef metadata validation
-Fuzzy title/author matching
-3-tier full-text retrieval (PMC → Unpaywall → PubMed abstract) │
-▼
+  - PyMuPDF text extraction
+  - LLM-driven structuring into StudentReviewInput schema
+  - PubMed search reproduction via NCBI E-utilities API
+       │
+       ▼
+Stage 2: Paper Verification  ◄── MY MODULE
+  - CrossRef metadata validation
+  - Fuzzy title/author matching
+  - 3-tier full-text retrieval (PMC → Unpaywall → PubMed abstract)
+       │
+       ▼
 Stage 3: Data Extraction
-Dual-LLM extraction (Qwen-Plus + Gemini 2.5)
-Independent extraction for cross-validation
-Schema-based field alignment │
-▼
+  - Dual-LLM extraction (Qwen-Plus + Gemini 2.5)
+  - Independent extraction for cross-validation
+  - Schema-based field alignment
+       │
+       ▼
 Stage 4: Comparison & Reporting
-6-state field classification (MATCH, PARTIAL_MATCH, DIFF,
-MISSING_MODEL, MISSING_STUDENT, NEEDS_REVIEW)
-Coverage and agreement metrics (tracked separately)
-DOCX report with per-paper agreement tables and flag appendix
-
----
+  - 6-state field classification
+  - Coverage and agreement metrics
+  - DOCX report with flags appendix
+```
 
 ## Key Results (Demo)
 
